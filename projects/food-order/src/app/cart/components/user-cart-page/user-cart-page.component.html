@@ -1,0 +1,42 @@
+<div class="container cart-items">
+  <!-- Heading section -->
+  <div class="heading">
+    <h1>List of foods</h1>
+  </div>
+
+  <!-- Content section -->
+  <div class="content">
+    <div class="row">
+      <!-- Loop through cartItems and display each food item within a column -->
+      <div class="mt-3" *ngFor="let food of cartItems">
+
+        <!-- Angular Material card component to display food item -->
+        <mat-card>
+          <!-- Card header with food name and subtitle -->
+          <mat-card-header>
+            <mat-card-title>{{ food.name }}</mat-card-title>
+            <mat-card-subtitle>{{ food.name }}</mat-card-subtitle>
+          </mat-card-header>
+
+          <!-- Card content (you can add details here if needed) -->
+          <mat-card-content>
+            <!-- Add content here if needed -->
+          </mat-card-content>
+
+          <!-- Card actions (if any) -->
+          <mat-card-actions>
+            <div class="row">
+              <div class="col-md-6">
+                  <button type="button" class="btn btn-danger" (click)="removeCartItem(food.id)"> Remove</button>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-warning"  (click)="buyCartItems(food)"> Buy</button>
+              </div>
+            </div>
+            <!-- Add actions here if needed -->
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

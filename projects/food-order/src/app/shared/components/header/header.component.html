@@ -1,0 +1,63 @@
+<div class="container">
+  <nav class="navbar navbar-expand-md fixed-top bg-dark navbar-dark">
+    <div class="container">
+      <!--[routerLink]="['/admin-home']"-->
+      <div [ngSwitch]="menuType">
+          <a href="#" *ngSwitchCase="'default'" [routerLink]="['/public/foodList']"  class="navbar-brand h1 mb-0">Food order</a>
+
+            <a href="#" *ngSwitchCase="'user'" [routerLink]="['/public/foodList']"  class="navbar-brand h1 mb-0">Food order</a>
+      </div>
+
+
+
+      <button
+        type="button"
+        class="navbar-toggler"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div [ngSwitch]="menuType">
+          <ul class="navbar-nav" *ngSwitchCase="'default'">
+          <li class="nav-item active">
+            <a routerLink="/public/foodList" class="nav-link">Home</a>
+          </li>
+
+          <li class="nav-item active">
+            <a routerLink="/auth/login" class="nav-link"> Login/Sign-up</a>
+          </li>
+          </ul>
+        </div>
+        <div [ngSwitch]="menuType">
+              <ul class="navbar-nav" *ngSwitchCase="'user'">
+          <li class="nav-item active">
+            <a routerLink="/public/foodList" class="nav-link">Home</a>
+          </li>
+
+          <li class="nav-item active">
+            <a routerLink="/Bookings" class="nav-link"> Order</a>
+          </li>
+          <li class="nav-item active">
+            <a routerLink="/my-account" class="nav-link">My Account</a>
+          </li>
+          <div class="logout">
+            <span class="admin-name">{{ userName }}</span>
+       <!-- <mat-icon matBadge="15" matBadgeColor="warn" class="cart-color">shopping_cart</mat-icon> -->
+
+
+            <i [routerLink]="'/cart/cartpage'" class="fas fa-shopping-cart cart-color" [matBadge]="cartItemsCount" matBadgeColor="accent" matBadgeSize="small"></i>
+            <button class="btn btn-primary" (click)="logout()">Logout</button>
+          </div>
+        </ul>
+        </div>
+
+
+      </div>
+    </div>
+  </nav>
+</div>

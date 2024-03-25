@@ -1,0 +1,78 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+.image-size{
+  width: 260px !important;
+  border-radius: 10px !important;
+}
+.heading{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.content{
+  margin-top: 10px !important;
+}
+.admin-auth {
+    width: 300px;
+    margin-left: 434px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 1px 1px 1px 1px #ddd;
+}
+h1.signup-heading {
+    font-size: larger;
+
+    margin-left: 66px;
+}
+
+.form-button{
+  margin-top: 5px;
+  margin-left: 106px;
+}
+.error-r{
+  color: red;
+  margin-left: 80px;
+}
+.auth-main{
+  margin-top: 100px;
+}
+.al-ac{
+  margin-left: 450px;
+}
+.cart-color{
+  color: white;
+  margin-right: 10px;
+}
+.logout{
+  margin-left: 650px;
+}
+.form-size{
+  width: 50px;
+}
+.cart-items{
+  margin-top: 100px;
+}
+.billing-content{
+  margin-top: 100px;
+}
+button.btn.btn-primary.button-cart {
+    border-radius: 0;
+    /* margin-right: -100px; */
+    /* height: 36px; */
+}
+button.btn.btn-primary.button-cart-d {
+    border-radius: 0;
+        margin-left: -60px;
+    /* margin-right: -100px; */
+    /* height: 36px; */
+}
+input.form-class.form-size.cart-input.ng-untouched.ng-pristine.ng-valid {
+    width: 31px;
+    margin-left: -27px;
+    height: 38px;
+}
+.btn-buy{
+  margin-left: -72px;
+}

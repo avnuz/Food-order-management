@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="heading">
+    <h1>Food Detail</h1>
+  </div>
+  <div class="content">
+    <div class="row">
+      <div class="col-md-3">
+        <img
+          class="image-size"
+          [src]="foodDetail.image"
+          alt="foodDetail.imagename"
+        />
+      </div>
+      <div class="col-md-8">
+        <h1>{{ foodDetail.name }}</h1>
+        <p>{{ foodDetail.description }}</p>
+        <p>Price:{{ foodPrice | currency  : "INR" }} </p>
+
+        <div class="row mt-3 mb-3">
+          <div class="col-md-1">
+            <button class="btn btn-primary button-cart" (click)="addProduct('inc')" type="button">+</button>
+          </div>
+          <div class="col-md-1 ">
+            <input class="form-class form-size cart-input" [(ngModel)]="inputValue" type="number"/>
+          </div>
+          <div class="col-md-1">
+            <button class="btn btn-primary button-cart-d " (click)="addProduct('dec')" type="button">-</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <button type="button" (click)="goToCartPage(foodDetail)" class="btn btn-warning">Add to cart</button>
+          </div>
+          <div class="col-md-2 btn-buy ">
+            <button type="button" (click)="goToBack()" class="btn btn-primary ">
+              Go Back
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,250 @@
+<div class="container admin-add-food">
+  <h1 class="admin-add-food-heading">Add Food</h1>
+  <form #adminAddFood="ngForm" (ngSubmit)="addFood(adminAddFood.value)">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="name@example.com"
+        name="name"
+        ngModel
+        required
+        minlength="3"
+        maxlength="20"
+        pattern="[a-zA-Z ]*"
+        [ngClass]="{
+          'is-invalid':
+            adminAddFood.submitted &&
+            adminAddFood.controls['name'] &&
+            adminAddFood.controls['name'].invalid
+        }"
+      />
+      <label for="floatingInput">Food Name</label>
+      <div
+        *ngIf="adminAddFood.submitted && adminAddFood.controls['name']?.errors"
+      >
+        <div
+          *ngIf="adminAddFood.controls['name'].errors?.['required']"
+          class="error"
+        >
+          Food Name is required
+        </div>
+        <div
+          *ngIf="adminAddFood.controls['name'].errors?.['minlength']"
+          class="error"
+        >
+          Minimum length is 3 characters
+        </div>
+        <div
+          *ngIf="adminAddFood.controls['name'].errors?.['maxlength']"
+          class="error"
+        >
+          Maximum length is 20 characters
+        </div>
+        <div
+          *ngIf="adminAddFood.controls['name'].errors?.['pattern']"
+          class="error"
+        >
+          Only letters and spaces are allowed
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating mb-3">
+      <textarea
+        class="form-control"
+        id="floatingTextarea"
+        placeholder="Description"
+        style="height: 100px"
+        name="description"
+        ngModel
+        required
+        minlength="10"
+        maxlength="200"
+        pattern="[a-zA-Z ]*"
+        [ngClass]="{
+          'is-invalid':
+            adminAddFood.submitted &&
+            adminAddFood.controls['description'] &&
+            adminAddFood.controls['description'].invalid
+        }"
+      ></textarea>
+      <label for="floatingTextarea">Description</label>
+      <div
+        *ngIf="
+          adminAddFood.submitted && adminAddFood.controls['description']?.errors
+        "
+      >
+        <div
+          *ngIf="adminAddFood.controls['description'].errors?.['required']"
+          class="error"
+        >
+          Description is required
+        </div>
+        <div
+          *ngIf="adminAddFood.controls['description'].errors?.['minlength']"
+          class="error"
+        >
+          Minimum length is 10 characters
+        </div>
+        <div
+          *ngIf="adminAddFood.controls['description'].errors?.['maxlength']"
+          class="error"
+        >
+          Maximum length is 200 characters
+        </div>
+        <div
+          *ngIf="adminAddFood.controls['description'].errors?.['pattern']"
+          class="error"
+        >
+          Only letters and spaces are allowed
+        </div>
+      </div>
+    </div>
+
+    <label>Non-Veg/Veg</label>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="veg"
+        name="veg"
+        [(ngModel)]="isVeg"
+        (change)="toggleFoodType($event)"
+        required
+      />
+      <label class="form-check-label" for="veg">Vegetarian</label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="nonveg"
+        name="nonveg"
+        [(ngModel)]="isNonVeg"
+        (change)="toggleFoodType($event)"
+        required
+      />
+      <label class="form-check-label" for="nonveg">Non-Vegetarian</label>
+
+      <div
+        *ngIf="
+          adminAddFood.submitted &&
+          adminAddFood.controls['veg']?.errors &&
+          adminAddFood.controls['nonveg']?.errors
+        "
+      >
+        <div
+          *ngIf="adminAddFood.controls['veg'].errors?.['required'] && adminAddFood.controls['nonveg'].errors?.['required'] "
+          class="error"
+        >
+          Veg/Non-veg is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating mt-3">
+      <select
+        class="form-select"
+        id="floatingCategory"
+        aria-label="Floating label select example"
+        name="category"
+        ngModel
+        required
+        [ngClass]="{
+          'is-invalid':
+            adminAddFood.submitted &&
+            adminAddFood.controls['category'] &&
+            adminAddFood.controls['category'].invalid
+        }"
+      >
+        <option selected>--Select--</option>
+        <option value="appetizer">Appetizer</option>
+        <option value="maincourse">Main-Course</option>
+        <option value="desserts">Desserts</option>
+        <option value="soups">Soups</option>
+        <option value="salads">Salads</option>
+        <option value="beverages">Beverages</option>
+        <option value="juice">Milkshakes/Juices</option>
+      </select>
+      <label for="floatingSelect">Food Category</label>
+    </div>
+    <div
+      *ngIf="
+        adminAddFood.submitted && adminAddFood.controls['category']?.errors
+      "
+    >
+      <div
+        *ngIf="adminAddFood.controls['category'].errors?.['required']"
+        class="error"
+      >
+        Description is required
+      </div>
+    </div>
+
+
+     <label class="form-label"> Price </label>
+      <input
+        type="text"
+        class="form-control"
+        name="price"
+        placeholder="Enter price.."
+        ngModel
+        required
+      />
+
+    <div class="mt-3">
+      <label for="formFile" class="form-label">Upload Food Image</label>
+      <input
+        class="form-control"
+        type="file"
+        id="formFile"
+        name="image"
+        (change)="onFileSelected($event)"
+        ngModel
+        required
+        [ngClass]="{
+          'is-invalid':
+            adminAddFood.submitted &&
+            adminAddFood.controls['image'] &&
+            adminAddFood.controls['image'].invalid
+        }"
+      />
+    </div>
+    <div *ngIf="selectedFile">
+      <div>Selected Image: {{ selectedFile }}</div>
+      <img
+        [src]="imagePreview"
+        alt="Selected Image"
+        style="max-width: 200px; max-height: 200px"
+      />
+    </div>
+    <div
+      *ngIf="adminAddFood.submitted && adminAddFood.controls['image']?.errors"
+    >
+      <div
+        *ngIf="adminAddFood.controls['image'].errors?.['required']"
+        class="error"
+      >
+        Description is required
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1 mt-4">
+        <button type="submit" class="add-food" mat-raised-button color="primary">Add</button>
+      </div>
+      <div class="col-md-1 mt-4">
+        <button
+          type="button"
+          mat-raised-button
+          (click)="resetOnClick()"
+        class="reset"
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

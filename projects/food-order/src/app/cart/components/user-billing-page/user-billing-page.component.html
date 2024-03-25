@@ -1,0 +1,49 @@
+<div class="container billing-content">
+  <div *ngIf="foodData">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ foodData.name }}</mat-card-title>
+      <mat-card-subtitle>{{ foodData.name }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content> </mat-card-content>
+    <mat-card-actions> </mat-card-actions>
+  </mat-card>
+</div>
+  <form #billing="ngForm" (ngSubmit)="buy(billing.value)">
+
+     <label>Dine in/ Take away</label>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="dinein"
+        name="dinein"
+        [(ngModel)]="isDinein"
+        (change)="toggleFoodType($event)"
+        required
+      />
+      <label class="form-check-label" for="dinein">Dine-in</label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="takeaway"
+        name="takeaway"
+        [(ngModel)]="isTakeaway"
+        (change)="toggleFoodType($event)"
+        required
+      />
+      <label class="form-check-label" for="takeaway">Take-away</label>
+    </div>
+
+    <label>
+      <input type="radio" class="form-radio-input" [(ngModel)]="isCash" name="cash" value="Cash on Delivery" /> Cash
+      on Delivery
+    </label>
+    <div>
+      <button class="btn btn-primary" type="submit">Buy</button>
+    </div>
+
+  </form>
+</div>
